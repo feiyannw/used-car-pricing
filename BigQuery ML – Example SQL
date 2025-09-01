@@ -1,0 +1,17 @@
+-- Assumes your cleaned training table has the columns:
+-- price (label), year, manufacturer, model, condition, cylinders, odometer, transmission
+CREATE OR REPLACE MODEL `used-car-pricing.used_car_dataset.used_car_model_automl`
+OPTIONS(
+  MODEL_TYPE='AUTOML_REGRESSOR',
+  INPUT_LABEL_COLS=['price']
+) AS
+SELECT
+  price,
+  year,
+  manufacturer,
+  model,
+  condition,
+  cylinders,
+  odometer,
+  transmission
+FROM `used-car-pricing.used_car_dataset.cleaned_vehicles_sample`;
