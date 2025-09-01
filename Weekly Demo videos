@@ -1,0 +1,94 @@
+# Weekly Demo Videos
+- Week 1: Step 1: Identify the Problem
+Area of Interest:
+
+I would like to develop an analytics app for the secondary car market, in which price-making decisions are generally made with incomplete or non-standard data. Being able to effectively forecast the fair market value of an automobile can be useful to both sellers and buyers and is a worthwhile product for online car sites.
+
+Personal Motivation: I have forever been interested in second-hand cars. Previously, I have bought and sold several of my own second-hand cars, and I even have some good friends who own their own second-hand car businesses. Actually, nearly everybody I have ever known has bought or sold second-hand cars—it is a necessity, not a luxury.
+
+Particularly in the recent years because of the pandemic and economic changes, used car prices have become highly unpredictable and volatile. That is why I think that it's both timely and necessary to create a pricing forecasting system to introduce transparency and insights into the market.
+
+ 
+
+Problem Statement:
+
+The existing used car pricing process is usually manual and ad-hoc. I would like to develop a cloud-native ML service that accepts simple car details (i.e., make, model year, mileage, transmission, fuel type) as input and returns an estimated fair market value.
+
+ 
+
+What I Would Like to Research
+
+Is it possible to use machine learning to forecast second-hand automobile prices accurately using historical transactional data? What are the most significant factors (make, age, mileage, fuel type) in attempting to account for price?
+
+How can we construct a cloud-scalable, prediction service exposed through API and visualized in an easy-to-use dashboard?
+
+ 
+
+Technical Plan:
+
+Data source: Kaggle or BigQuery Public Datasets' publicly used car dataset
+
+ML Model: BigQuery ML regression model (or LightGBM on SageMaker)
+
+Deployment: Cloud Run or App Engine with REST API
+
+CI/CD: GitHub Actions for automating deployment
+
+Monitoring: Stackdriver or Grafana for usage tracking and prediction trends Why this project This project integrates my passion for used cars with data science, machine learning, and cloud deployment. It also satisfies the technical course criteria and has practical utility in assisting users in making improved pricing decisions when purchasing or selling automobiles.
+
+- Week 2: Step 2: Identify the Data Set
+Data Set Selection
+
+For this project, I'm going to utilize a publicly available dataset of used car listings. My top two choices are:
+
+A Kaggle dataset of Craigslist Used Cars, including detailed listing information like price, make, model year, mileage, condition, fuel, and transmission.
+
+A BigQuery Public Dataset, ml_datasets.used_cars, which is a condensed version with some of the salient features like model year, make, odometer, and price.
+
+ 
+
+Both dataframes are large enough (with over 300,000 rows) and contain the most critical features I need to train a regression model to forecast the price. I am leaning towards utilizing the Kaggle dataset currently for its richer feature set so that there is room for further exploration and potentially doing some feature engineering. I will clean and preprocess the dataset and then load it up into Google Cloud Storage before querying from BigQuery to use for modeling.
+
+Initial Data Dictionary Overview (Kaggle)
+
+Price (target variable), year, make, model (vehicle identification), odometer, condition, fuel, title_status, transmission, type (categorical inputs), state, paint_color
+
+ 
+
+Why This Data Works
+
+This information is a great match for my problem statement: it's representative of actual second-hand car listings, contains numeric and categorical features, and lends itself to supervised learning. It's also a good dataset to illustrate cloud-native workflows: from preprocessing in Python, storage in GCP, to model training with BigQuery ML or deployment with SageMaker.
+
+ 
+
+GitHub Integration Plan
+
+In order to assist the development process along the software lifecycle, I am going to utilize GitHub as follows:
+
+Version Control: All model code, notebooks, and preprocessing scripts will be kept on GitHub for version control.
+
+CI/CD Automation: I'll utilize GitHub Actions for automating retraining models and deploying API processes. Collaboration & Documentation: Project structure and documentation (README, issue tracking, etc.) will be kept in GitHub for reproducibility and transparency.
+
+- Week 3: Step 3: Construct a Functional Specification: 
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6cd4f60b-92e8-452b-ad06-b3160151eb83
+
+- Week 4: Step 4: Perform a Data Ingest
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ba2f1192-d551-4764-9f1b-b3210008163b
+
+- Week 5: Step 5:Demonstration
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=dbbcf5cd-ce9e-42bc-8cc2-b328003488c5
+
+- Week 6: Step 6: Implement a Predictive Model
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cdc001fc-c354-4fa0-bcd2-b32f001cb454
+
+- Week 7: Step 7: Containerized Microservice Application
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=39e8b00e-7ea1-42cf-a497-b335017a8397
+
+- Week 8: Step 8: Implement Containerized Application
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b53f63b3-cb81-4f45-890a-b33d0034f7d4
+
+- Week 9: Step 9: Implement Performance Monitoring Application
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=469c634b-cddb-4863-8924-b344002c329f
+
+- Week 10: Step 10: Implement a Production Environment
+https://northwestern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6d956330-590f-482a-8179-b34b001e7e37
