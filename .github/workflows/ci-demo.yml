@@ -1,0 +1,46 @@
+name: CI Demo - Health & Predict
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show commit info
+        run: echo "Commit $GITHUB_SHA by $GITHUB_ACTOR on $GITHUB_REF"
+
+      - name: Hit /health
+        env:
+          BASE_URL: https://used-car-bqml-295289023086-295289023086.us-central1.run.app
+        run: |
+          set -e
+          echo "Checking $BASE_URL/health ..."
+          curl -fsS "$BASE_URL/health" | tee health.json
+
+      - name: Hit /predict with sample payload
+        env:
+          BASE_URL: https://used-car-bqml-295289023086-295289023086.us-central1.run.app
+        run: |
+          set -e
+          cat <<'JSON' > payload.json
+          {
+            "year": 2016,
+            "manufacturer": "toyota",
+            "model": "camry",
+            "condition": "good",
+            "cylinders": "4 cylinders",
+            "odometer": 65000,
+            "transmission": "automatic"
+          }
+          JSON
+          echo "POST $BASE_URL/predict ..."
+          curl -fsS -H "Content-Type: application/json" -d @payload.json "$BASE_URL/predict" | tee predict.json
+
+      - name: CI finished
+        run: echo "CI demo finished successfully ✅"
