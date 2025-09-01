@@ -17,17 +17,15 @@ jobs:
 
       - name: Hit /health
         env:
-          BASE_URL: https://used-car-bqml-295289023086-295289023086.us-central1.run.app
+          BASE_URL: https://used-car-bqml-295289023086.us-central1.run.app
         run: |
-          set -e
           echo "Checking $BASE_URL/health ..."
           curl -fsS "$BASE_URL/health" | tee health.json
 
       - name: Hit /predict with sample payload
         env:
-          BASE_URL: https://used-car-bqml-295289023086-295289023086.us-central1.run.app
+          BASE_URL: https://used-car-bqml-295289023086.us-central1.run.app
         run: |
-          set -e
           cat <<'JSON' > payload.json
           {
             "year": 2016,
@@ -39,8 +37,7 @@ jobs:
             "transmission": "automatic"
           }
           JSON
-          echo "POST $BASE_URL/predict ..."
           curl -fsS -H "Content-Type: application/json" -d @payload.json "$BASE_URL/predict" | tee predict.json
 
       - name: CI finished
-        run: echo "CI demo finished successfully ✅"
+        run: echo "✅ CI demo finished successfully"
