@@ -3,4 +3,4 @@ steps:
     args: ["build", "-t", "gcr.io/$PROJECT_ID/used-car-api:$COMMIT_SHA", "."]
 images:
   - "gcr.io/$PROJECT_ID/used-car-api:$COMMIT_SHA"
-# 你也可以在 Cloud Build 触发器里附加 gcloud run deploy 步骤
+
